@@ -1,0 +1,2 @@
+<app-add-post-form (addNewPost)="addPostHandler($event)" [currentPost]="currentPost"></app-add-post-form>
+<app-post [posts]="posts" (emitedCurrentPost)="currentPost=$event"></app-post>

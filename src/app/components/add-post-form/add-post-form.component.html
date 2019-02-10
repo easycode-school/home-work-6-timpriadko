@@ -1,0 +1,29 @@
+<form (ngSubmit)="addPostForm.form.valid && onSubmitHandler(addPostForm)" #addPostForm="ngForm">
+    <div class="form-row align-items-center justify-content-center m-2">
+        <div class="col-md-3">
+            <label class="sr-only" for="inlineFormInput">Title</label>
+            <input type="text" class="form-control mb-2" id="title" name="title" placeholder="Title" [(ngModel)]="newPost.title" #title="ngModel" [ngClass]="{ 'is-invalid': addPostForm.submitted && !title.value.length }" required />
+            <div *ngIf="addPostForm.submitted && title.invalid" class="alert alert-danger">
+                <div *ngIf="!!title.errors.required">
+                    Title is required.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <label class="sr-only" for="inlineFormInputGroup">Body</label>
+            <textarea type="text" class="form-control mb-2" id="body" name="body" placeholder="Body" [(ngModel)]="newPost.body" #body="ngModel" [ngClass]="{ 'is-invalid': addPostForm.submitted && !body.value }" required></textarea>
+            <div *ngIf="addPostForm.submitted && !body.value" class="alert alert-danger">
+                <div *ngIf="!!body.errors?.required">
+                    Body is required.
+                </div>
+            </div>
+            <div style="display: none" id="userId"></div>
+            <div style="display: none" id="id"></div>
+        </div>
+        <div class="col-auto">
+            <button type="submit" id="form-submit" class="btn btn-primary mb-2">Submit</button>
+            <button type="button" id="form-edit" style="display: none" class="btn btn-success mb-2" (click)="editHandler()">Edit</button>
+            <button type="button" id="cancel-edit" style="display: none" class="btn btn-danger mb-2 ml-1" (click)="cancelEditHandler()">Cancel</button>
+        </div>
+    </div>
+</form>

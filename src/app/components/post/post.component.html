@@ -1,0 +1,22 @@
+<div class="card p-1 m-1 col-lg-3 col-md-5" *ngFor="let post of posts">
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.body }}</p>
+    </div>
+    <div>
+        <div style="display: none" class="userId">{{ post.userId }}</div>
+        <button class="btn btn-success col-4 fas fa-edit" (click)="editPostHandler($event)"></button>
+        <div style="display: none" class="id">{{ post.id }}</div>
+        <button class="btn btn-info col-4 fas fa-comments" (click)="getCommentHandler($event)"></button>
+        <button class="btn btn-danger col-4 fas fa-trash-alt" (click)="deletePostHandler($event)"></button>
+    </div>
+    <div class="comments" style="display: none;">
+        <div class="card border-info mb-1 mt-1" style="max-width: 18rem;" *ngFor="let comment of comments">
+            <div class="card-header">Email: {{ comment.email }}</div>
+            <div class="card-body text-info">
+                <h5 class="card-title">Name: {{ comment.name }}</h5>
+                <p class="card-text">{{ comment.body }}</p>
+            </div>
+        </div>
+    </div>
+</div>
